@@ -55,13 +55,40 @@ It is expressed as:
 
 ##  Code 
 ```scilab
+lambda = 0.05;      
+sigma  = 2;         
 
+Pt_vals = 0.5:0.5:20;   
+Gt_const = 25;          
+Pm_const = 1e-14;       
 
+Rmax_Pt = ((Pt_vals .* Gt_const.^2 .* lambda.^2 .* sigma) ./ ((4*%pi)^3 .* Pm_const)).^(1/4);
+
+Gt_vals = 5:2:100;      
+Pt_const = 2;           
+Pm_const = 1e-14;       
+
+Rmax_Gt = ((Pt_const .* Gt_vals.^2 .* lambda.^2 .* sigma) ./ ((4*%pi)^3 .* Pm_const)).^(1/4);
+
+Pm_vals = logspace(-14, -9, 50);  
+Pt_const = 2;          
+Gt_const = 25;         
+
+Rmax_Pm = ((Pt_const .* Gt_const.^2 .* lambda.^2 .* sigma) ./ ((4*%pi)^3 .* Pm_vals)).^(1/4);
+
+subplot(3,1,1);
+plot(Pt_vals, Rmax_Pt, 'r', 'LineWidth', 2);
+
+subplot(3,1,2);
+plot(Gt_vals, Rmax_Gt, 'g', 'LineWidth', 2);
+
+subplot(3,1,3);
+plot(Pm_vals, Rmax_Pm, 'b', 'LineWidth', 2);
 ```
 
 ## Output
 
-
+<img width="1694" height="987" alt="image" src="https://github.com/user-attachments/assets/a6dc72aa-b056-437b-a821-579ed3fd9383" />
 
 ## Manual Calculation
 
